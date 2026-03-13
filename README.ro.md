@@ -5,10 +5,10 @@ Datele sunt citite direct din structura de fișiere a fiecărui autor, fără ba
 
 ## 📁 Structura proiectului
 API‑ul funcționează indiferent dacă folderul principal conține sau nu diacritice:
-- Poezi si Proza (fără diacritice)
-- Poezi și Proză (cu diacritice)
+- Poezii si Proza (fără diacritice)
+- Poezii și Proză (cu diacritice)
 
-Poezi și Proză/
+Poezii și Proză/
 └── data/
     ├── Mihai Eminescu/
     │   ├── poezii/
@@ -50,11 +50,16 @@ API‑ul:
 - citește fișierele .txt pentru poezii, proză și bibliografie
 - servește imaginile autorilor
 - normalizează numele autorilor pentru a permite URL‑uri flexibil
+- servește imaginile autorilor
+- folosește caching intern pentru performanță
+- protejează accesul la fișiere prin safePath (anti‑path‑traversal)
+
 
 Este ideal pentru:
 - aplicații web
-- proiecte educaționale
 - aplicații mobile
+- biblioteci online
+- proiecte educaționale
 - arhive literare digitale
 
 
@@ -75,11 +80,12 @@ Serverul rulează implicit pe:
 ## 📡 Endpoint‑uri disponibil
 
 🔍 1. Lista tuturor poeților
-`GET /api/poeti` => Returnează lista folderelor din data/.
+`GET /api/poeti`
+Returnează lista folderelor din data/.
 
 📜 2. Toate poeziile unui autor
 `GET /api/autor/:autor/poezii`
-Exemplu: /api/autor/mihai_eminescu/poezii
+Exemplu: /api/autor/Mihai%20Eminescu/poezii
 
 📘 3. Toată proza unui autor
 `GET /api/autor/:autor/proza`
@@ -88,11 +94,12 @@ Exemplu: /api/autor/mihai_eminescu/poezii
 `GET /api/cauta/:autor/:titlu`
 Exemplu: /api/cauta/mihai_eminescu/adio
 
-🆔 5. Căutare după ID (fără text)
+🆔 5. Căutare după ID  (fără text)
 `GET /api/autor/:autor/id/:id`
+Exemplu: /api/autor/Mihai%20Eminescu/poezie/poezie-1/text
 
 ✍️ 6. Poezie în format JSON (cu titlu + text)
-`GET /api/poezie/:autor/:id/versuri`
+`GET /api/autor/:autor/poezie/:id/text`
 
   Returnează:
     {
@@ -102,18 +109,9 @@ Exemplu: /api/cauta/mihai_eminescu/adio
       "continut": "Textul poeziei..."
     }
 
-📝 7. Poezie integrală (doar text simplu)
-`GET /api/poezie/:autor/:id/text`
-Returnează exact conținutul fișierului .txt.
-
-📚 8. Bibliografie (text simplu)
+📚 7. Bibliografie (text simplu)
 `GET /api/autor/:autor/bibliografie/text`
 Returnează conținutul fișierului Note Bibliografice.txt
-
-🖼️ 9. Poza autorului
-`GET /api/autor/:autor/poza`
-Returnează imaginea ca fișier
-
 
 ## 🛡️ Securitate
 API‑ul include:
@@ -123,7 +121,8 @@ API‑ul include:
 - rate limiting
 - CORS configurabil
 - acces controlat la fișiere
-Aceste măsuri asigură un API stabil, sigur și pregătit pentru producție.
+- caching intern pentru performanță
+Aceste măsuri îl fac potrivit pentru producție.
 
 
 ## 🧩 Observații
@@ -131,6 +130,7 @@ Aceste măsuri asigură un API stabil, sigur și pregătit pentru producție.
 - Structura este modulară și ușor de extins.
 - Pentru a adăuga un autor nou, este suficient să creezi folderul și fișierul JSON.
 - Endpoint‑urile sunt optimizate pentru consum rapid și caching.
+- Nu necesită baze de date — totul este file‑based
 
 
 ## 📝 Licență

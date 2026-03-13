@@ -5,11 +5,11 @@ The API reads data directly from the project’s folder structure, making it eas
 
 ## 📁 Project Structure
 The API automatically detects the main directory, whether it is named:
-- Poezi si Proza (without diacritics), or
-- Poezi și Proză (with diacritics)
+- Poezii si Proza (without diacritics), or
+- Poezii și Proză (with diacritics)
 Internal structure:
 
-Poezi și Proză/
+Poezii și Proză/
 └── data/
     ├── Mihai Eminescu/
     │   ├── poezii/
@@ -73,15 +73,11 @@ Example: /api/autor/mihai_eminescu/poezii
 📘 3. Get all prose by an author
 `GET /api/autor/:autor/proza`
 
-🔎 4. Search by title (poetry + prose)
-`GET /api/cauta/:autor/:titlu`
-Example: `/api/cauta/mihai_eminescu/luceafarul`
-
-🆔 5. Search by ID (metadata only)
+🆔 4. Search by ID (metadata only)
 `GET /api/autor/:autor/id/:id`
 
-✍️ 6. Get poem as JSON (title + text)
-`GET /api/poezie/:autor/:id/versuri`
+✍️ 5. Get poem as JSON (title + text)
+`GET /api/poezie/:autor/:id/text`
 Example response:
 {
   "id": "poezie-1",
@@ -90,14 +86,10 @@ Example response:
   "continut": "Full poem text..."
 }
 
-📝 7. Get poem text only
-`GET /api/poezie/:autor/:id/text`
-Returns the raw .txt content.
-
-📚 8. Get bibliography text
+📚 6. Get bibliography text
 `GET /api/autor/:autor/bibliografie/text`
 
-🖼️ 9. Get author image
+🖼️ 7. Get author image
 `GET /api/autor/:autor/poza`
 Returns the image file.
 
@@ -110,12 +102,13 @@ The API includes:
 - rate limiting
 - strict CORS configuration
 - controlled file access
+- internal caching for performance
 These measures ensure a stable, safe, and production‑ready environment.
 
 
 ## 🧩 Notes
 - The API is fully file‑based: adding a new author requires only a folder and a JSON file.
-- The system automatically handles folder names with or without diacritics.
+- Folder names with or without diacritics are supported automatically.
 - The structure is modular, clean, and easy to extend.
 - Ideal for educational apps, literary archives, digital humanities, and cultural preservation projects.
 

@@ -1,0 +1,239 @@
+openapi: 3.0.3
+info:
+  title: Romanian Classical Literature API
+  description: >
+    A file-based Node.js + Express API that provides structured access to Romanian
+    classical literature: poetry, prose, bibliography, and author images.
+  version: 1.0.0
+  contact:
+    name: Maria Lavinia Dusca
+
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+
+paths:
+
+  /api/poeti:
+    get:
+      summary: List all authors
+      description: Returns the list of all author folders inside the `data/` directory.
+      responses:
+        '200':
+          description: List of authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              example: ["Mihai Eminescu", "George Topîrceanu"]
+
+  /api/autor/{autor}/poezii:
+    get:
+      summary: Get all poems by an author
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+          description: Author name (with or without diacritics)
+      responses:
+        '200':
+          description: List of poems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PoezieMeta'
+
+  /api/autor/{autor}/proza:
+    get:
+      summary: Get all prose by an author
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of prose items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProzaMeta'
+
+  /api/cauta/{autor}/{titlu}:
+    get:
+      summary: Search poetry and prose by title
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: titlu
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+
+  /api/autor/{autor}/id/{id}:
+    get:
+      summary: Get item metadata by ID
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Metadata for poem or prose
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemMeta'
+        '404':
+          description: Item not found
+
+  /api/autor/{autor}/poezie/{id}/text:
+    get:
+      summary: Get full poem text
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Full poem text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemText'
+        '404':
+          description: Poem not found
+
+  /api/autor/{autor}/bibliografie/text:
+    get:
+      summary: Get bibliography text
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bibliography text
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /api/autor/{autor}/poza:
+    get:
+      summary: Get author image
+      parameters:
+        - in: path
+          name: autor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Author image file
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Image not found
+
+components:
+  schemas:
+
+    PoezieMeta:
+      type: object
+      properties:
+        id:
+          type: string
+        titlu:
+          type: string
+        tip:
+          type: string
+          example: poezie
+        versuri_path:
+          type: string
+
+    ProzaMeta:
+      type: object
+      properties:
+        id:
+          type: string
+        titlu:
+          type: string
+        tip:
+          type: string
+          example: proza
+        versuri_path:
+          type: string
+
+    ItemMeta:
+      type: object
+      properties:
+        id:
+          type: string
+        titlu:
+          type: string
+        tip:
+          type: string
+        versuri_path:
+          type: string
+
+    SearchResult:
+      type: object
+      properties:
+        id:
+          type: string
+        titlu:
+          type: string
+        tip:
+          type: string
+
+    PoemText:
+      type: object
+      properties:
+        id:
+          type: string
+        titlu:
+          type: string
+        text:
+          type: string
