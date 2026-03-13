@@ -4,6 +4,7 @@
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-yellow)
 ![License: MIT](https://img.shields.io/badge/License-MIT-purple)
 ![Status](https://img.shields.io/badge/Status-Active-success)
+
 A Node.js + Express API that provides structured access to the works of major Romanian classical authors: poetry, prose, bibliography, and author images.
 The API reads data directly from the project’s folder structure, making it easy to maintain, extend, and integrate into educational or cultural applications.
 
