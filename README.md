@@ -1,7 +1,12 @@
 # 📚 Romanian Classical Literature API
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![Express](https://img.shields.io/badge/Express.js-API-blue)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-yellow)
+![License: MIT](https://img.shields.io/badge/License-MIT-purple)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 A Node.js + Express API that provides structured access to the works of major Romanian classical authors: poetry, prose, bibliography, and author images.
 The API reads data directly from the project’s folder structure, making it easy to maintain, extend, and integrate into educational or cultural applications.
-
 
 ## 📁 Project Structure
 The API automatically detects the main directory, whether it is named:

@@ -1,4 +1,10 @@
 # 📚 API – Poeții Clasici Români  
+![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
+![Express](https://img.shields.io/badge/Express.js-API-blue)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-yellow)
+![License: MIT](https://img.shields.io/badge/License-MIT-purple)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 Un API Node.js + Express care oferă acces la operele marilor poeți români: poezii, proză, bibliografie și imagini.  
 Datele sunt citite direct din structura de fișiere a fiecărui autor, fără baze de date externe.
 
