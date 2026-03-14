@@ -1,6 +1,5 @@
 # 📚 API – Poeții Clasici Români  
-## 📄 Documentație API
-Documentația completă este disponibilă aici:  
+
 [![Documentation](https://img.shields.io/badge/Docs-OpenAPI%20Redoc-blue)](https://lavinia-81.github.io/API-Poezii-si-Proza/)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-green)
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
