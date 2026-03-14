@@ -83,7 +83,7 @@ Poezii și Proză/
 - un fișier JSON cu metadate
 - un folder cu poezii (.txt)
 - un folder cu proză (.txt)
-- un folder cu bibliografie și imagin
+- un folder cu bibliografie și imagine
 ---
 
 Exemplu de JSON:
