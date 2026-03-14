@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
-  title: Romanian Classical Literature API
+  title: Poems and Prose - API - Romanian Classical Literature
   description: >
     A file-based Node.js + Express API that provides structured access to Romanian
-    classical literature: poetry, prose, bibliography, and author images.
+    classical literature: poetry, prose, bibliography, and author images.   
   version: 1.0.0
   contact:
     name: Maria Lavinia Dusca
