@@ -1,4 +1,4 @@
-# 📚 API – Poeții Clasici Români  
+# 📚 API –  Poezii și Proză - Poetii Clasici ai României
 
 [![Documentation](https://img.shields.io/badge/Docs-OpenAPI%20Redoc-blue)](https://lavinia-81.github.io/API-Poezii-si-Proza/)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-green)
@@ -143,6 +143,9 @@ Exemplu: /api/autor/Mihai%20Eminescu/poezie/poezie-1/text
 📚 7. Bibliografie (text simplu)
 `GET /api/autor/:autor/bibliografie/text`
 Returnează conținutul fișierului Note Bibliografice.txt
+
+🖼️ 7. Afiseaza fotografia unui autor
+`GET /api/autor/:autor/poza`
 
 ---
 
