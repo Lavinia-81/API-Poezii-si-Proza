@@ -1,4 +1,4 @@
-# 📚 API –  Poezii și Proză - Poetii Clasici ai României
+# 📚 API –  Poezii și Proză - Poeții Clasici ai României
 
 [![Documentation](https://img.shields.io/badge/Docs-OpenAPI%20Redoc-blue)](https://lavinia-81.github.io/API-Poezii-si-Proza/)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-green)
