@@ -97,7 +97,6 @@ Default address:
 
 📜 2. Get all poems by an author
 `GET /api/autor/:autor/poezii`
-Example: /api/autor/mihai_eminescu/poezii
 
 📘 3. Get all prose by an author
 `GET /api/autor/:autor/proza`
@@ -106,7 +105,7 @@ Example: /api/autor/mihai_eminescu/poezii
 `GET /api/autor/:autor/id/:id`
 
 ✍️ 5. Get poem as JSON (title + text)
-`GET /api/poezie/:autor/:id/text`
+`GET /api/cauta/:autor/:titlu`
 Example response:
 {
   "id": "poezie-1",
