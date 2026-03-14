@@ -81,17 +81,18 @@ Poezii și Proză/
     - un folder cu poezii (.txt)
     - un folder cu proză (.txt)
     - un folder cu bibliografie și imagin
+---
 
-    Exemplu de JSON:
-    ```
-      {
-      "autor": "Mihai Eminescu",
-      "poza": "data/Mihai Eminescu/bibliografie/Eminescu.jpg",
-      "bibliografie_path": "data/Mihai Eminescu/bibliografie/Note Bibliografice.txt",
-      "poezii": [...],
-      "proza": [...]
-     }
-    ```
+Exemplu de JSON:
+```
+  {
+  "autor": "Mihai Eminescu",
+  "poza": "data/Mihai Eminescu/bibliografie/Eminescu.jpg",
+  "bibliografie_path": "data/Mihai Eminescu/bibliografie/Note Bibliografice.txt",
+  "poezii": [...],
+  "proza": [...]
+ }
+```
 ---
 
 ## ⚙️ Funcționare
