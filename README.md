@@ -1,4 +1,4 @@
-# 📚 Romanian Classical Literature API   
+# 📚 Poezii și Proză - API - Romanian Classical Literature
 [![Documentation](https://img.shields.io/badge/Docs-OpenAPI%20Redoc-blue)](https://lavinia-81.github.io/API-Poezii-si-Proza/)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-green)
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
