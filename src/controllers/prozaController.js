@@ -1,12 +1,13 @@
-// src/controllers/autorController.js
+// src/controllers/prozaController.js
 import { getPoeziiAutor, getProzaAutor } from '../services/autorService.js';
+import { normalizeAutor } from "../utils/normalizeAutor.js";
 import logger from '../logger/logger.js';
 
 export function poeziiAutor(req, res) {
-    const { autor } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
 
     try {
-        const poezii = getPoeziiAutor(autor);
+        const poezii = getPoeziiAutor(autorNormalizat);
 
         if (!poezii) {
             return res.status(404).json({ mesaj: "Autorul nu există" });
@@ -20,10 +21,10 @@ export function poeziiAutor(req, res) {
 }
 
 export function prozaAutor(req, res) {
-    const { autor } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
 
     try {
-        const proza = getProzaAutor(autor);
+        const proza = getProzaAutor(autorNormalizat);
 
         if (!proza) {
             return res.status(404).json({ mesaj: "Autorul nu există" });

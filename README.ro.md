@@ -24,9 +24,9 @@ https://lavinia-81.github.io/API-Poezii-si-Proza/docs/
 
 ## 📚 Descriere
 
-Acest API oferă acces la poezii, proză, bibliografie și imagini ale autorilor clasici români.  
-Este un API **read-only**, curat, scalabil și structurat pentru utilizare educațională și literară.
-Datele sunt citite direct din structura de fișiere a fiecărui autor, fără baze de date externe.
+Un API modern construit cu **Node.js + Express**, care oferă acces structurat la operele marilor autori clasici români: poezie, proză, bibliografie și imagini ale autorilor.
+
+API‑ul citește datele direct dintr-o structură de fișiere clară și predictibilă — fără baze de date — fiind ideal pentru platforme educaționale, arhive culturale, proiecte de digital humanities și aplicații literare.
 
 ---
 
@@ -37,8 +37,8 @@ Datele sunt citite direct din structura de fișiere a fiecărui autor, fără ba
 - 🖼️ Imagini ale autorilor (JPEG/PNG)
 - 🧾 Text biografic pentru fiecare autor
 - 🔍 Căutare după autor și titlu
-- 📂 Structură curată, bazată pe fișiere (fără bază de date)
-- 🔒 API doar pentru citire — sigur pentru utilizare publică
+- 🔤 Suport complet pentru diacritice și variații de scriere  
+- 📂 Arhitectură file‑based (ușor de extins) 
 - 🌐 Documentație completă folosind OpenAPI 3.0.3
 - 🎨 Interfață elegantă Redoc + opțional Swagger U
 
@@ -79,8 +79,8 @@ Poezii și Proză/
 ├── README.md
 └── server.js   
 ```
-<<<<<<< HEAD
-  ## Fiecare autor are:
+  ## 📦 Structura fiecărui autor
+
   - un fișier JSON cu metadate
   - un folder cu poezii (.txt)
   - un folder cu proză (.txt)
@@ -98,26 +98,8 @@ Poezii și Proză/
       "proza": [...]
     }
   ```
-=======
-## Fiecare autor are:
-- un fișier JSON cu metadate
-- un folder cu poezii (.txt)
-- un folder cu proză (.txt)
-- un folder cu bibliografie și imagine
----
-
-Exemplu de JSON:
-```
-{
-  "autor": "Mihai Eminescu",
-  "poza": "data/Mihai Eminescu/bibliografie/Eminescu.jpg",
-  "bibliografie_path": "data/Mihai Eminescu/bibliografie/Note Bibliografice.txt",
-  "poezii": [...],
-  "proza": [...]
-}
-```
->>>>>>> a17439589a8b3c1ce4dafac0b9f0340cc660059b
----
+  
+---  
 
 ## ⚙️ Funcționare
 
@@ -164,26 +146,26 @@ Serverul rulează implicit pe: `http://localhost:3000`
 ## 📡 Endpoint‑uri disponibil
 ```
 🔍 1. Lista tuturor poeților
-`GET /api/poeti`
+`GET /poeti`
 Returnează lista folderelor din data/.
 
 📜 2. Toate poeziile unui autor
-`GET /api/autor/:autor/poezii`
+`GET /autor/:autor/poezii`
 Exemplu: /api/autor/Mihai%20Eminescu/poezii
 
 📘 3. Toată proza unui autor
-`GET /api/autor/:autor/proza`
+`GET /autor/:autor/proza`
 
 🔎 4. Căutare după titlu (poezie + proză)
-`GET /api/cauta/:autor/:titlu`
+`GET /cauta/:autor/:titlu`
 Exemplu: /api/cauta/mihai_eminescu/adio
 
 🆔 5. Căutare după ID  (fără text)
-`GET /api/autor/:autor/id/:id`
-Exemplu: /api/autor/Mihai%20Eminescu/poezie/poezie-1/text
+`GET /autor/:autor/id/:id`
+Exemplu: /autor/Mihai%20Eminescu/poezie/poezie-1/text
 
 ✍️ 6. Poezie în format JSON (cu titlu + text)
-`GET /api/autor/:autor/poezie/:id/text`
+`GET /autor/:autor/poezie/:id/text`
 
   Returnează:
     {
@@ -194,11 +176,11 @@ Exemplu: /api/autor/Mihai%20Eminescu/poezie/poezie-1/text
     }
 
 📚 7. Bibliografie (text simplu)
-`GET /api/autor/:autor/bibliografie/text`
+`GET /autor/:autor/bibliografie/text`
 Returnează conținutul fișierului Note Bibliografice.txt
 
 🖼️ 7. Afiseaza fotografia unui autor
-`GET /api/autor/:autor/poza`
+`GET /autor/:autor/poza`
 ```
 ---
 
@@ -228,10 +210,8 @@ Aceste măsuri îl fac potrivit pentru producție.
 
 ## 📝 Licență
 
-Acest proiect este distribuit sub licența MIT, una dintre cele mai permisive și utilizate licențe open‑source.
-Aceasta îți oferă libertatea de a utiliza, modifica, distribui și integra codul în proiecte personale sau comerciale, cu condiția păstrării notificării de copyright.
-Pentru detalii complete, consultă fișierul
-LICENSE
+Acest proiect este distribuit sub licența MIT.
+Pentru detalii complete, consultă fișierul LICENSE
 
 ---
 
@@ -239,4 +219,3 @@ LICENSE
 
 Acest API a fost construit cu grijă pentru a oferi acces modern, sigur și elegant la literatura românească clasică.
 Proiect dezvoltat de Maria Lavinia.
-

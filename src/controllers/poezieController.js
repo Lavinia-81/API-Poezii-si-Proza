@@ -1,11 +1,13 @@
 import { getPoezieVersuri } from '../services/poezieService.js';
+import { normalizeAutor } from "../utils/normalizeAutor.js";
 import logger from '../logger/logger.js';
 
 export function poezieVersuri(req, res) {
-    const { autor, id } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
+    const { id } = req.params;
 
     try {
-        const rezultat = getPoezieVersuri(autor, id);
+        const rezultat = getPoezieVersuri(autorNormalizat, id);
 
         if (rezultat === null) {
             return res.status(404).json({ mesaj: "Autorul nu există" });
@@ -24,10 +26,11 @@ export function poezieVersuri(req, res) {
 }
 
 export function poezieText(req, res) {
-    const { autor, id } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
+    const { id } = req.params;
 
     try {
-        const text = getPoezieText(autor, id);
+        const text = getPoezieText(autorNormalizat, id);
 
         if (text === null) {
             return res.status(404).json({ mesaj: "Autorul nu există" });

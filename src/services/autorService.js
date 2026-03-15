@@ -29,9 +29,25 @@ export function getItemById(autor, id) {
     if (!data) return null;
 
     const toate = [...data.poezii, ...data.proza];
-    const item = toate.find(p => p.id === id);
 
-    return item || false; // false = autor există, dar ID-ul nu
+    // Acceptă:
+    // - "1"
+    // - "poezie-1"
+    // - "proza-1"
+    // - "Poezie-1" (case-insensitive)
+    const idLower = id.toLowerCase();
+
+    const item = toate.find(p => {
+        const pid = p.id.toLowerCase();
+        return (
+            pid === idLower ||                // exact match
+            pid === `poezie-${idLower}` ||    // poezie-1
+            pid === `proza-${idLower}` ||     // proza-1
+            pid.endsWith(`-${idLower}`)       // orice tip-1
+        );
+    });
+
+    return item || false;
 }
 
 // Bibliografia unui autor

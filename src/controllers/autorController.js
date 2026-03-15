@@ -1,6 +1,7 @@
 // src/controllers/autorController.js
 import fs from 'fs';
 import { safePath } from '../utils/safePath.js';
+import { normalizeAutor } from "../utils/normalizeAutor.js";
 import logger from '../logger/logger.js';
 import {
     getPoeziiAutor,
@@ -12,24 +13,26 @@ import {
 
 
 export function poeziiAutor(req, res) {
-    const { autor } = req.params;
-    const data = getPoeziiAutor(autor);
+    const autorNormalizat = normalizeAutor(req.params.autor);
+    const data = getPoeziiAutor(autorNormalizat);
 
     if (!data) return res.status(404).json({ mesaj: "Autorul nu există" });
     res.json(data);
 }
 
 export function prozaAutor(req, res) {
-    const { autor } = req.params;
-    const data = getProzaAutor(autor);
+    const autorNormalizat = normalizeAutor(req.params.autor);
+    const data = getProzaAutor(autorNormalizat);
 
     if (!data) return res.status(404).json({ mesaj: "Autorul nu există" });
     res.json(data);
 }
 
 export function itemById(req, res) {
-    const { autor, id } = req.params;
-    const data = getItemById(autor, id);
+    const autorNormalizat = normalizeAutor(req.params.autor);
+    const { id } = req.params;
+
+    const data = getItemById(autorNormalizat, id);
 
     if (data === null) return res.status(404).json({ mesaj: "Autorul nu există" });
     if (data === false) return res.status(404).json({ mesaj: "Itemul nu a fost găsit" });
@@ -38,10 +41,10 @@ export function itemById(req, res) {
 }
 
 export function bibliografieText(req, res) {
-    const { autor } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
 
     try {
-        const text = getBibliografieText(autor);
+        const text = getBibliografieText(autorNormalizat);
 
         if (text === null) {
             return res.status(404).json({ mesaj: "Autorul nu există" });
@@ -56,10 +59,10 @@ export function bibliografieText(req, res) {
 }
 
 export function pozaAutor(req, res) {
-    const { autor } = req.params;
+    const autorNormalizat = normalizeAutor(req.params.autor);
 
     try {
-        const filePath = getPozaAutor(autor);
+        const filePath = getPozaAutor(autorNormalizat);
 
         if (filePath === null) {
             return res.status(404).json({ mesaj: "Autorul nu există" });
@@ -76,8 +79,10 @@ export function pozaAutor(req, res) {
 
 export function poezieText(req, res, next) {
     try {
-        const { autor, id } = req.params;
-        const item = getItemById(autor, id);
+         const autorNormalizat = normalizeAutor(req.params.autor);
+        const { id } = req.params;
+
+        const item = getItemById(autorNormalizat, id);
 
         if (!item) {
             return res.status(404).json({ mesaj: "Nu există acest ID" });

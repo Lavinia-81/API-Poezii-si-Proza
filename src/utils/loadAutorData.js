@@ -8,20 +8,20 @@ import { cache } from './cache.js';
 import { normalizeAutor } from './normalizeAutor.js';
 
 export function loadAutorData(autorRaw) {
-    const folderName = normalizeAutor(autorRaw);
+    const autorNormalizat = normalizeAutor(autorRaw);
     const dataFolder = getDataFolder();
     if (!dataFolder) return null;
 
     // caching autor
-    if (cache.autoriData.has(folderName)) {
-        return cache.autoriData.get(folderName);
+    if (cache.autoriData.has(autorNormalizat)) {
+        return cache.autoriData.get(autorNormalizat);
     }
 
     // citim toate folderele din /data
     const folders = fs.readdirSync(dataFolder);
 
-    // găsim folderul care se potrivește indiferent de litere mari/mici
-    const match = folders.find(f => f.toLowerCase() === folderName.toLowerCase());
+    // găsim folderul care se potrivește după normalizare completă
+    const match = folders.find(f => normalizeAutor(f) === autorNormalizat);
     if (!match) return null;
 
     // calea corectă către folderul autorului
@@ -37,7 +37,7 @@ export function loadAutorData(autorRaw) {
     const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
 
     // salvăm în cache
-    cache.autoriData.set(folderName, data);
+    cache.autoriData.set(autorNormalizat, data);
 
     return data;
 }

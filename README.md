@@ -21,8 +21,9 @@ https://lavinia-81.github.io/API-Poezii-si-Proza/docs/
 
 ##  📚 Description
 
-A Node.js + Express API that provides structured access to the works of major Romanian classical authors: poetry, prose, bibliography, and author images.
-The API reads data directly from the project’s folder structure, making it easy to maintain, extend, and integrate into educational or cultural applications.
+A modern **Node.js + Express** API that provides structured access to the works of major Romanian classical authors: poetry, prose, bibliography, and author images.
+
+The API reads directly from a clean, predictable folder structure — no database required — making it ideal for educational platforms, cultural archives, digital humanities, and literary applications.
 
 ---
 
@@ -33,10 +34,11 @@ The API reads data directly from the project’s folder structure, making it eas
 - 🖼️ Author images (JPEG/PNG)  
 - 🧾 Bibliography text for each author  
 - 🔍 Search by author and title  
-- 📂 Clean file‑based structure (no database required)  
+- 📂 File‑based architecture (easy to extend)   
 - 🔒 Read‑only API — safe for public use  
 - 🌐 Fully documented using **OpenAPI 3.0.3**  
 - 🎨 Elegant Redoc UI + optional Swagger UI  
+- 🔤 Full support for **diacritics and case‑insensitive author names** 
 
 ---
 
@@ -126,14 +128,14 @@ Server runs at: `http://localhost:3000`
 
 The API exposes the following main resources:
 ```
-- `/api/poeti` — list all authors  
-- `/api/autor/{autor}/poezii` — poems by author  
-- `/api/autor/{autor}/proza` — prose by author  
-- `/api/autor/{autor}/id/{id}` — metadata by ID  
-- `/api/autor/{autor}/poezie/{id}/text` — full poem text  
-- `/api/autor/{autor}/bibliografie/text` — bibliography  
-- `/api/autor/{autor}/poza` — author image  
-- `/api/cauta/{autor}/{titlu}` — search  
+- `/poeti` — list all authors  
+- `/autor/{autor}/poezii` — poems by author  
+- `/autor/{autor}/proza` — prose by author  
+- `/autor/{autor}/id/{id}` — metadata by ID  
+- `/autor/{autor}/poezie/{id}/text` — full poem text  
+- `/autor/{autor}/bibliografie/text` — bibliography  
+- `/autor/{autor}/poza` — author image  
+- `/cauta/{autor}/{titlu}` — search  
 
 ```
 All endpoints are **read‑only**
@@ -165,8 +167,8 @@ These measures ensure a stable, safe, and production‑ready environment.
 
 ## 📝 License
 
-This project is distributed under the MIT License, a permissive open‑source license that allows reuse, modification, and distribution with minimal restrictions.
-See the full license text in the LICENSE file
+Distributed under the MIT License.
+See the LICENSE file for details
 
 ---
 
